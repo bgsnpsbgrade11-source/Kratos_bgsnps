@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Payment | KRATOS</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="header">
+
+    <a href="index.html" class="logo">
+        KRATOS
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="sports.html">Sports</a>
+        <a href="register.html">Register</a>
+    </nav>
+
+</header>
+
+<main>
+
+<section class="form-hero">
+
+    <p class="eyebrow">PAYMENT</p>
+
+    <h1>COMPLETE<br><span>YOUR PAYMENT.</span></h1>
+
+    <p>
+        Please pay the registration amount shown below.
+    </p>
+
+</section>
+
+<section class="registration-wrapper">
+
+    <div class="form-section">
+
+        <div class="form-section-title">
+            <span>01</span>
+
+            <div>
+                <p class="eyebrow">REGISTRATION PAYMENT</p>
+                <h2>Amount Payable</h2>
+            </div>
+        </div>
+
+        <div class="payment-total">
+
+            <p> TOTAL REGISTRATION FEE </p>
+
+            <h2 id="paymentAmount">₹0</h2>
+
+        </div>
+
+        <div class="payment-qr">
+
+            <p class="eyebrow">SCAN TO PAY</p>
+
+            <img
+                src="payment-qr.png"
+                alt="KRATOS Payment QR Code"
+                class="qr-code"
+            >
+
+            <p class="payment-note">
+                Scan the QR code using your UPI application
+                and pay the exact amount displayed above.
+            </p>
+
+        </div>
+
+        <div class="payment-instructions">
+
+            <p class="eyebrow">PAYMENT INSTRUCTIONS</p>
+
+            <p>
+                After completing the payment, keep your
+                transaction ID or payment screenshot for reference.
+            </p>
+
+        </div>
+
+        <div class="submit-area">
+
+            <a href="success.html" class="btn btn-gold">
+                PAYMENT COMPLETED →
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+
+    <div class="footer-logo">
+        KRATOS
+    </div>
+
+    <p>Interschool Sports Competition</p>
+
+</footer>
+
+<script>
+
+    const registration =
+        JSON.parse(localStorage.getItem("registrationData"));
+
+    if (registration) {
+
+        document.getElementById("paymentAmount").textContent =
+            "₹" + Number(registration.total).toLocaleString("en-IN");
+
+    } else {
+
+        document.getElementById("paymentAmount").textContent =
+            "₹0";
+
+    }
+
+</script>
+
+</body>
+</html>
