@@ -90,11 +90,13 @@
 
         </div>
 
-        <div class="submit-area">
+               <div class="submit-area">
 
-            <a href="success.html" class="btn btn-gold">
+            <button onclick="completePayment()" class="btn btn-gold">
                 PAYMENT COMPLETED →
-            </a>
+            </button>
+
+        </div>
 
         </div>
 
@@ -116,22 +118,32 @@
 
 <script>
 
-    const registration =
-        JSON.parse(localStorage.getItem("registrationData"));
+    var registration = JSON.parse(localStorage.getItem("registrationData"));
 
     if (registration) {
-
         document.getElementById("paymentAmount").textContent =
             "₹" + Number(registration.total).toLocaleString("en-IN");
-
     } else {
+        document.getElementById("paymentAmount").textContent = "₹0";
+    }
 
-        document.getElementById("paymentAmount").textContent =
-            "₹0";
-
+    async function completePayment() {
+        if (registration) {
+            try {
+                await fetch("https://kratos-backend.bgsnps455.workers.dev/api/submit", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(registration)
+                });
+            } catch (err) {
+                console.error("Failed to send to backend:", err);
+            }
+        }
+        window.location.href = "success.html";
     }
 
 </script>
+
 
 </body>
 </html>
