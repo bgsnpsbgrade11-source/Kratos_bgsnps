@@ -111,17 +111,10 @@ function confirmRegistration() {
 
 
     /*
-        IMPORTANT:
-
-        This is currently the final
-        front-end confirmation.
-
-        When the Cloudflare Worker +
-        D1 database is connected,
-        this function will send the
-        registration to the database.
+        The registration data, including
+        the total amount, is already stored
+        in registrationData.
     */
-
 
     localStorage.setItem(
         "registrationSubmitted",
@@ -130,6 +123,6 @@ function confirmRegistration() {
 
 
     window.location.href =
-        "success.html";
+        "payment.html";
 
 }
