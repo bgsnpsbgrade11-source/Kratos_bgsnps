@@ -376,28 +376,20 @@ function updateSummary() {
 
 
 
-/* FORM SUBMISSION */
-
 document
     .getElementById("registrationForm")
-    .addEventListener("submit", function(event) {
+    .addEventListener("submit", async function(event) {
 
         event.preventDefault();
 
-
         const selectedEvents = [];
-
 
         document
             .querySelectorAll(".age-checkbox:checked")
             .forEach(checkbox => {
 
-                const sport =
-                    checkbox.dataset.sport;
-
-                const age =
-                    checkbox.dataset.age;
-
+                const sport = checkbox.dataset.sport;
+                const age = checkbox.dataset.age;
 
                 const quantity =
                     parseInt(
@@ -406,86 +398,42 @@ document
                         ).value
                     ) || 1;
 
-
                 selectedEvents.push({
-
                     sport: sport,
-
                     age: age,
-
                     quantity: quantity,
-
                     rate: sports[sport].fee,
-
-                    amount:
-                        quantity *
-                        sports[sport].fee
-
+                    amount: quantity * sports[sport].fee
                 });
 
             });
 
-
-
         if (selectedEvents.length === 0) {
-
-            alert(
-                "Please select at least one sport and age category."
-            );
-
+            alert("Please select at least one sport and age category.");
             return;
-
         }
 
-
-
         const registration = {
-
-            school:
-                document.getElementById(
-                    "schoolName"
-                ).value,
-
-            teacher:
-                document.getElementById(
-                    "teacherName"
-                ).value,
-
-            email:
-                document.getElementById(
-                    "email"
-                ).value,
-
-            phone:
-                document.getElementById(
-                    "phone"
-                ).value,
-
-            description:
-                document.getElementById(
-                    "description"
-                ).value,
-
-            events:
-                selectedEvents,
-
-            total:
-                selectedEvents.reduce(
-                    (sum, event) =>
-                        sum + event.amount,
-                    0
-                )
-
+            school: document.getElementById("schoolName").value,
+            teacher: document.getElementById("teacherName").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            description: document.getElementById("description").value,
+            events: selectedEvents,
+            total: selectedEvents.reduce((sum, e) => sum + e.amount, 0)
         };
 
+        localStorage.setItem("registrationData", JSON.stringify(registration));
 
-       localStorage.setItem(
-    "registrationData",
-    JSON.stringify(registration)
-);
+        try {
+            await fetch("https://kratos-bgsnps.bgsnps455.workers.dev/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(registration)
+            });
+        } catch (err) {
+            console.error("Failed to send to backend:", err);
+        }
 
-console.log("REGISTRATION SAVED:", registration);
-
-window.location.assign("review.html");
-
+        window.location.assign("review.html");
     });
