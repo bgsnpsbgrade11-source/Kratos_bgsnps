@@ -1772,3 +1772,51 @@ footer {
     font-size: 22px;
     font-weight: 700;
 }
+
+/* PAYMENT PAGE */
+
+.payment-total {
+    text-align: center;
+    padding: 35px 20px;
+    margin: 30px 0;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.payment-total p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.payment-total h2 {
+    font-size: clamp(40px, 6vw, 70px);
+    color: var(--gold);
+    margin: 15px 0 0;
+}
+
+.payment-qr {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.qr-code {
+    display: block;
+    width: min(100%, 320px);
+    height: auto;
+    margin: 25px auto;
+}
+
+.payment-note {
+    color: var(--muted);
+    max-width: 450px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.payment-instructions {
+    margin-top: 25px;
+    padding: 20px;
+    border-left: 2px solid var(--gold);
+    color: var(--muted);
+    line-height: 1.7;
+}
