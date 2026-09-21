@@ -426,7 +426,7 @@ document
         localStorage.setItem("registrationData", JSON.stringify(registration));
 
         try {
-            await fetch("https://kratos-bgsnps.bgsnps455.workers.dev/api/submit", {
+            await fetch("https://kratos-backend.bgsnps455.workers.dev/api/submit", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(registration)
