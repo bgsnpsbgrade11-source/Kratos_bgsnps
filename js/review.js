@@ -1,18 +1,15 @@
-const data = JSON.parse(
-    localStorage.getItem("registrationData")
-);
+const savedData = localStorage.getItem("registrationData");
 
+console.log("SAVED DATA:", savedData);
 
-/* If there is no registration data,
-   go back to the registration page */
+if (!savedData) {
 
-if (!data) {
-
-    alert("Registration data was not found. Please complete the registration again.");
-
-    window.location.href = "register.html";
+    alert("Registration information was not found.");
 
 } else {
+
+    const data = JSON.parse(savedData);
+
 
     /* SCHOOL DETAILS */
 
@@ -37,23 +34,15 @@ if (!data) {
     eventsContainer.innerHTML = "";
 
 
-    data.events.forEach(event => {
+    data.events.forEach(function(event) {
 
-        const row =
-            document.createElement("tr");
+        const row = document.createElement("tr");
 
         row.innerHTML = `
-
             <td>${event.sport}</td>
-
             <td>${event.age}</td>
-
             <td>${event.quantity}</td>
-
-            <td>
-                ₹${event.amount.toLocaleString("en-IN")}
-            </td>
-
+            <td>₹${event.amount.toLocaleString("en-IN")}</td>
         `;
 
         eventsContainer.appendChild(row);
@@ -64,7 +53,7 @@ if (!data) {
     /* TOTAL */
 
     document.getElementById("reviewTotal").textContent =
-        `₹${data.total.toLocaleString("en-IN")}`;
+        "₹" + data.total.toLocaleString("en-IN");
 
 }
 
@@ -73,8 +62,7 @@ if (!data) {
 
 function goBack() {
 
-    window.location.href =
-        "register.html";
+    window.location.href = "register.html";
 
 }
 
@@ -83,29 +71,6 @@ function goBack() {
 
 function confirmRegistration() {
 
-    const registrationId =
-        "CD-" +
-        new Date().getFullYear() +
-        "-" +
-        Math.random()
-            .toString(36)
-            .substring(2, 8)
-            .toUpperCase();
-
-
-    localStorage.setItem(
-        "registrationId",
-        registrationId
-    );
-
-
-    localStorage.setItem(
-        "registrationSubmitted",
-        "true"
-    );
-
-
-    window.location.href =
-        "payment.html";
+    window.location.href = "payment.html";
 
 }
