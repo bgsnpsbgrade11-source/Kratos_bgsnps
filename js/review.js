@@ -1,82 +1,72 @@
-const data =
-    JSON.parse(
-        localStorage.getItem(
-            "registrationData"
-        )
-    );
+const data = JSON.parse(
+    localStorage.getItem("registrationData")
+);
 
+
+/* If there is no registration data,
+   go back to the registration page */
 
 if (!data) {
 
-    window.location.href =
-        "register.html";
+    alert("Registration data was not found. Please complete the registration again.");
+
+    window.location.href = "register.html";
+
+} else {
+
+    /* SCHOOL DETAILS */
+
+    document.getElementById("reviewSchool").textContent =
+        data.school;
+
+    document.getElementById("reviewTeacher").textContent =
+        data.teacher;
+
+    document.getElementById("reviewEmail").textContent =
+        data.email;
+
+    document.getElementById("reviewPhone").textContent =
+        data.phone;
+
+
+    /* EVENTS */
+
+    const eventsContainer =
+        document.getElementById("reviewEvents");
+
+    eventsContainer.innerHTML = "";
+
+
+    data.events.forEach(event => {
+
+        const row =
+            document.createElement("tr");
+
+        row.innerHTML = `
+
+            <td>${event.sport}</td>
+
+            <td>${event.age}</td>
+
+            <td>${event.quantity}</td>
+
+            <td>
+                ₹${event.amount.toLocaleString("en-IN")}
+            </td>
+
+        `;
+
+        eventsContainer.appendChild(row);
+
+    });
+
+
+    /* TOTAL */
+
+    document.getElementById("reviewTotal").textContent =
+        `₹${data.total.toLocaleString("en-IN")}`;
 
 }
-
-
-
-/* SCHOOL DETAILS */
-
-document.getElementById(
-    "reviewSchool"
-).textContent = data.school;
-
-
-document.getElementById(
-    "reviewTeacher"
-).textContent = data.teacher;
-
-
-document.getElementById(
-    "reviewEmail"
-).textContent = data.email;
-
-
-document.getElementById(
-    "reviewPhone"
-).textContent = data.phone;
-
-
-
-/* EVENTS */
-
-const eventsContainer =
-    document.getElementById(
-        "reviewEvents"
-    );
-
-
-data.events.forEach(event => {
-
-    const row =
-        document.createElement("tr");
-
-
-    row.innerHTML = `
-
-        <td>${event.sport}</td>
-
-        <td>${event.age}</td>
-
-        <td>${event.quantity}</td>
-
-        <td>
-            ₹${event.amount.toLocaleString("en-IN")}
-        </td>
-
-    `;
-
-
-    eventsContainer.appendChild(row);
-
-});
-
-
-document.getElementById(
-    "reviewTotal"
-).textContent =
-    `₹${data.total.toLocaleString("en-IN")}`;
-
 
 
 /* BACK TO EDIT */
@@ -89,8 +79,7 @@ function goBack() {
 }
 
 
-
-/* CONFIRM */
+/* PROCEED TO PAYMENT */
 
 function confirmRegistration() {
 
@@ -109,12 +98,6 @@ function confirmRegistration() {
         registrationId
     );
 
-
-    /*
-        The registration data, including
-        the total amount, is already stored
-        in registrationData.
-    */
 
     localStorage.setItem(
         "registrationSubmitted",
