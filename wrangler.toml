@@ -1,8 +1,0 @@
-name = "kratos-registration"
-main = "worker.js"
-compatibility_date = "2026-09-21"
-
-[[d1_databases]]
-binding = "DB"
-database_name = "kratos-registrations"
-database_id = "5a317ed8-df7e-4025-ad3a-33ff7193d785"
