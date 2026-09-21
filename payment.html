@@ -127,7 +127,11 @@
         document.getElementById("paymentAmount").textContent = "₹0";
     }
 
+    var paymentDone = false;
+
     async function completePayment() {
+        if (paymentDone) return;
+        paymentDone = true;
         if (registration) {
             try {
                 await fetch("https://kratos-backend.bgsnps455.workers.dev/api/submit", {
@@ -143,6 +147,7 @@
     }
 
 </script>
+
 
 
 </body>
