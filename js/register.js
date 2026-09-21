@@ -479,13 +479,13 @@ document
         };
 
 
-        localStorage.setItem(
-            "registrationData",
-            JSON.stringify(registration)
-        );
+       localStorage.setItem(
+    "registrationData",
+    JSON.stringify(registration)
+);
 
+console.log("REGISTRATION SAVED:", registration);
 
-        window.location.href =
-            "review.html";
+window.location.assign("review.html");
 
     });
