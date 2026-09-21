@@ -434,6 +434,15 @@ document
         } catch (err) {
             console.error("Failed to send to backend:", err);
         }
+        try {
+            await fetch("https://kratos-backend.bgsnps455.workers.dev/api/submit", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(registration)
+            });
+        } catch (err) {
+            console.error("Failed to send to backend:", err);
+        }
 
         window.location.assign("review.html");
     });
