@@ -1,0 +1,13 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kratos-bgsnps",
+  "compatibility_date": "2026-09-21",
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "kratos-registrations",
+      "database_id": "517e2252-6c1c-4a0d-9c87-2c28100913b3"
+    }
+  ]
+}
