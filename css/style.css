@@ -763,9 +763,9 @@ nav a.active {
 
 
 .rule-grid {
-    padding: 5px 70px 45px;
+    padding: 5px 0 45px;
     display: grid;
-    grid-template-columns: .8fr .8fr;
+    grid-template-columns: 1fr;
     gap: 40px;
 }
 
@@ -797,16 +797,16 @@ nav a.active {
 }
 
 .rules ul {
-    padding-left: 18px;
+    padding-left: 20px;
     color: var(--muted);
-    font-size: 16px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 2;
 }
 
 
 .rules li {
 
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 
 }
 
