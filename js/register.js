@@ -22,12 +22,12 @@ const sports = {
 
     "Badminton Singles": {
         fee: 500,
-        ages: ["U-14", "U-17"]
+        ages: ["U-11", "U-14", "U-17"]
     },
 
     "Badminton Doubles": {
         fee: 1000,
-        ages: ["U-14", "U-17"]
+        ages: ["U-11", "U-14", "U-17"]
     },
 
     "Table Tennis Singles": {
@@ -45,14 +45,14 @@ const sports = {
         ages: ["U-14", "U-17"]
     },
 
-        "Chess": {
+    "Chess": {
         fee: 300,
         ages: ["U-11", "U-14", "U-17"]
     },
 
     "Marchpast": {
         fee: 2000,
-        ages: ["U-14", "U-17"]
+        ages: ["All Ages"]
     }
 
 };
@@ -86,6 +86,10 @@ Object.entries(sports).forEach(
 
         if (mixedSports.includes(sport)) {
             genderOptions += '<option value="Mixed">Mixed</option>';
+        }
+
+        if (sport === "Marchpast") {
+            genderOptions = '<option value="N/A">N/A</option>';
         }
 
         wrapper.innerHTML = `
