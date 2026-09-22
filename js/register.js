@@ -53,6 +53,9 @@ const sports = {
 };
 
 
+const mixedSports = ["Basketball", "Badminton Doubles", "Table Tennis Doubles"];
+
+
 const sportsContainer =
     document.getElementById("sportsContainer");
 
@@ -73,6 +76,12 @@ Object.entries(sports).forEach(
 
         wrapper.className =
             "event-selector";
+
+        var genderOptions = '<option value="Boys">Boys</option><option value="Girls">Girls</option>';
+
+        if (mixedSports.includes(sport)) {
+            genderOptions += '<option value="Mixed">Mixed</option>';
+        }
 
         wrapper.innerHTML = `
 
@@ -146,9 +155,7 @@ Object.entries(sports).forEach(
                             data-age="${age}"
                             disabled
                         >
-                            <option value="Boys">Boys</option>
-                            <option value="Girls">Girls</option>
-                            <option value="Mixed">Mixed</option>
+                            ${genderOptions}
                         </select>
 
                     </div>
