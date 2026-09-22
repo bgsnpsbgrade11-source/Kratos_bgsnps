@@ -41,6 +41,7 @@ if (!savedData) {
         row.innerHTML = `
             <td>${event.sport}</td>
             <td>${event.age}</td>
+            <td>${event.gender || "N/A"}</td>
             <td>${event.quantity}</td>
             <td>₹${event.amount.toLocaleString("en-IN")}</td>
         `;
