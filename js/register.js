@@ -159,6 +159,8 @@ Object.entries(sports).forEach(
                         >
 
                         <select
+                        ${sport !== "Marchpast" ? `
+                        <select
                             class="gender-select"
                             data-sport="${sport}"
                             data-age="${age}"
@@ -166,6 +168,7 @@ Object.entries(sports).forEach(
                         >
                             ${genderOptions}
                         </select>
+                        ` : ""}
 
                     </div>
 
