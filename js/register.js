@@ -11,7 +11,7 @@ const sports = {
     },
 
     "Swimming Relay": {
-        fee: 2000,
+        fee: 1000,
         ages: ["U-12", "U-14", "U-16"]
     },
 
