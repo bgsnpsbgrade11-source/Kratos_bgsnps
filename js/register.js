@@ -17,7 +17,7 @@ const sports = {
 
     "Swimming Individual": {
         fee: 500,
-        ages: ["U-06 (25M)", "U-08 (25M)", "U-10(25M)","U-12 (50M)","U-16 (50M)",]
+        ages: ["U-06 (25M)", "U-08 (25M)", "U-10 (25M)", "U-12 (50M)", "U-16 (50M)"]
     },
 
     "Badminton Singles": {
@@ -47,7 +47,7 @@ const sports = {
 
     "Chess": {
         fee: 300,
-        ages: ["U-09", "U-11", "U-14"", "U-17"]
+        ages: ["U-09", "U-11", "U-14", "U-17"]
     },
 
     "Marchpast": {
@@ -158,7 +158,6 @@ Object.entries(sports).forEach(
                             data-age="${age}"
                         >
 
-                        <select
                         ${sport !== "Marchpast" ? `
                         <select
                             class="gender-select"
