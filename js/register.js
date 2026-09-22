@@ -17,17 +17,17 @@ const sports = {
 
     "Swimming Individual": {
         fee: 500,
-        ages: ["U-11", "U-14", "U-17"]
+        ages: ["U-06 (25M)", "U-08 (25M)", "U-10(25M)","U-12 (50M)","U-16 (50M)",]
     },
 
     "Badminton Singles": {
         fee: 500,
-        ages: ["U-11", "U-14", "U-17"]
+        ages: ["U-14", "U-17"]
     },
 
     "Badminton Doubles": {
         fee: 1000,
-        ages: ["U-11", "U-14", "U-17"]
+        ages: ["U-14", "U-17"]
     },
 
     "Table Tennis Singles": {
