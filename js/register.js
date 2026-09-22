@@ -56,10 +56,8 @@ const sports = {
 const sportsContainer =
     document.getElementById("sportsContainer");
 
-
 const summaryBody =
     document.getElementById("summaryBody");
-
 
 const totalAmount =
     document.getElementById("totalAmount");
@@ -75,7 +73,6 @@ Object.entries(sports).forEach(
 
         wrapper.className =
             "event-selector";
-
 
         wrapper.innerHTML = `
 
@@ -105,7 +102,6 @@ Object.entries(sports).forEach(
 
             </div>
 
-
             <div
                 class="age-options"
                 id="ages-${sportIndex}"
@@ -134,7 +130,6 @@ Object.entries(sports).forEach(
 
                         </label>
 
-
                         <input
                             type="number"
                             min="1"
@@ -145,6 +140,17 @@ Object.entries(sports).forEach(
                             data-age="${age}"
                         >
 
+                        <select
+                            class="gender-select"
+                            data-sport="${sport}"
+                            data-age="${age}"
+                            disabled
+                        >
+                            <option value="Boys">Boys</option>
+                            <option value="Girls">Girls</option>
+                            <option value="Mixed">Mixed</option>
+                        </select>
+
                     </div>
 
                 `).join("")}
@@ -153,12 +159,10 @@ Object.entries(sports).forEach(
 
         `;
 
-
         sportsContainer.appendChild(wrapper);
 
     }
 );
-
 
 
 /* SPORT TOGGLE */
@@ -172,49 +176,44 @@ document
             const sport =
                 toggle.dataset.sport;
 
-
             const container =
                 toggle.closest(".event-selector");
 
-
             const ageOptions =
                 container.querySelector(".age-options");
-
 
             ageOptions.classList.toggle(
                 "visible",
                 toggle.checked
             );
 
-
             if (!toggle.checked) {
 
                 container
                     .querySelectorAll(".age-checkbox")
                     .forEach(cb => {
-
                         cb.checked = false;
-
                     });
-
 
                 container
                     .querySelectorAll(".quantity-input")
                     .forEach(input => {
-
                         input.disabled = true;
+                    });
 
+                container
+                    .querySelectorAll(".gender-select")
+                    .forEach(select => {
+                        select.disabled = true;
                     });
 
             }
-
 
             updateSummary();
 
         });
 
     });
-
 
 
 /* AGE CHECKBOX */
@@ -231,16 +230,22 @@ document
             const age =
                 checkbox.dataset.age;
 
-
             const quantity =
                 document.querySelector(
                     `.quantity-input[data-sport="${sport}"][data-age="${age}"]`
                 );
 
-
             quantity.disabled =
                 !checkbox.checked;
 
+            const genderSelect =
+                document.querySelector(
+                    `.gender-select[data-sport="${sport}"][data-age="${age}"]`
+                );
+
+            if (genderSelect) {
+                genderSelect.disabled = !checkbox.checked;
+            }
 
             updateSummary();
 
@@ -249,20 +254,22 @@ document
     });
 
 
-
 /* QUANTITY */
 
 document
     .querySelectorAll(".quantity-input")
     .forEach(input => {
-
-        input.addEventListener(
-            "input",
-            updateSummary
-        );
-
+        input.addEventListener("input", updateSummary);
     });
 
+
+/* GENDER */
+
+document
+    .querySelectorAll(".gender-select")
+    .forEach(select => {
+        select.addEventListener("change", updateSummary);
+    });
 
 
 /* SUMMARY */
@@ -277,13 +284,11 @@ function updateSummary() {
 
     let hasEvents = false;
 
-
     document
         .querySelectorAll(".age-checkbox:checked")
         .forEach(checkbox => {
 
             hasEvents = true;
-
 
             const sport =
                 checkbox.dataset.sport;
@@ -291,12 +296,10 @@ function updateSummary() {
             const age =
                 checkbox.dataset.age;
 
-
             const quantityInput =
                 document.querySelector(
                     `.quantity-input[data-sport="${sport}"][data-age="${age}"]`
                 );
-
 
             const quantity =
                 Math.max(
@@ -304,21 +307,24 @@ function updateSummary() {
                     parseInt(quantityInput.value) || 1
                 );
 
+            const genderSelect =
+                document.querySelector(
+                    `.gender-select[data-sport="${sport}"][data-age="${age}"]`
+                );
+
+            const gender =
+                genderSelect ? genderSelect.value : "N/A";
 
             const fee =
                 sports[sport].fee;
 
-
             const amount =
                 fee * quantity;
 
-
             total += amount;
-
 
             const row =
                 document.createElement("tr");
-
 
             row.innerHTML = `
 
@@ -330,6 +336,8 @@ function updateSummary() {
 
                 <td>${quantity}</td>
 
+                <td>${gender}</td>
+
                 <td>
                     ₹${fee.toLocaleString("en-IN")}
                 </td>
@@ -340,14 +348,11 @@ function updateSummary() {
 
             `;
 
-
             summaryBody.appendChild(row);
 
             rowNumber++;
 
         });
-
-
 
     if (!hasEvents) {
 
@@ -356,7 +361,7 @@ function updateSummary() {
             <tr>
 
                 <td
-                    colspan="6"
+                    colspan="7"
                     class="empty-row"
                 >
                     No events selected yet.
@@ -368,12 +373,10 @@ function updateSummary() {
 
     }
 
-
     totalAmount.textContent =
         `₹${total.toLocaleString("en-IN")}`;
 
 }
-
 
 
 document
@@ -398,9 +401,18 @@ document
                         ).value
                     ) || 1;
 
+                const genderSelect =
+                    document.querySelector(
+                        `.gender-select[data-sport="${sport}"][data-age="${age}"]`
+                    );
+
+                const gender =
+                    genderSelect ? genderSelect.value : "N/A";
+
                 selectedEvents.push({
                     sport: sport,
                     age: age,
+                    gender: gender,
                     quantity: quantity,
                     rate: sports[sport].fee,
                     amount: quantity * sports[sport].fee
@@ -424,7 +436,6 @@ document
         };
 
         localStorage.setItem("registrationData", JSON.stringify(registration));
-
 
         window.location.assign("review.html");
     });
