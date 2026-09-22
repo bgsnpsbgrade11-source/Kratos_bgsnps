@@ -45,9 +45,14 @@ const sports = {
         ages: ["U-14", "U-17"]
     },
 
-    "Chess": {
+        "Chess": {
         fee: 300,
         ages: ["U-11", "U-14", "U-17"]
+    },
+
+    "Marchpast": {
+        fee: 2000,
+        ages: ["U-14", "U-17"]
     }
 
 };
