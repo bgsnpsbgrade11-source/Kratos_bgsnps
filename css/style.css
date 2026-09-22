@@ -798,7 +798,7 @@ nav a.active {
 
 .rules ul {
     padding-left: 20px;
-    color: var(--muted);
+    color: #fff;
     font-size: 18px;
     line-height: 2;
 }
@@ -1816,3 +1816,14 @@ footer {
     color: var(--muted);
     line-height: 1.7;
 }
+.rule-grid table {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px;
+}
+
+.rule-grid table th,
+.rule-grid table td {
+    font-size: 16px;
+}
+
