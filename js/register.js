@@ -12,7 +12,7 @@ const sports = {
 
     "Swimming Relay": {
         fee: 2000,
-        ages: ["U-11", "U-14", "U-17"]
+        ages: ["U-12", "U-14", "U-16"]
     },
 
     "Swimming Individual": {
