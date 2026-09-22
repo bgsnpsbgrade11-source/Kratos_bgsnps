@@ -111,8 +111,17 @@ textarea {
 
     letter-spacing: -1px;
 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
 }
 
+.logo img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
 
 .logo span,
 .footer-logo span {
@@ -811,6 +820,17 @@ nav a.active {
 }
 
 
+.rule-grid table {
+    width: 100% !important;
+    max-width: 100% !important;
+    font-size: 16px;
+}
+
+.rule-grid table th,
+.rule-grid table td {
+    font-size: 16px;
+}
+
 
 /* REGISTRATION */
 
@@ -1118,6 +1138,20 @@ nav a.active {
 }
 
 
+.gender-select {
+    padding: 8px;
+    background: rgba(255,255,255,.05);
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 0;
+    font-size: 14px;
+}
+
+.gender-select:disabled {
+    opacity: .3;
+}
+
+
 
 /* TABLE */
 
@@ -1133,8 +1167,6 @@ table {
     width: 100%;
 
     border-collapse: collapse;
-
-    min-width: 700px;
 
 }
 
@@ -1595,26 +1627,27 @@ footer {
     color: var(--muted);
     line-height: 1.7;
 }
-.rule-grid table {
-    width: 100% !important;
-    max-width: 100% !important;
-    font-size: 16px;
-}
 
-.rule-grid table th,
-.rule-grid table td {
-    font-size: 16px;
-}
+
 /* MOBILE RESPONSIVE */
 
 @media (max-width: 768px) {
 
     html, body {
         overflow-x: hidden;
-        max-width: 100%;
-        width: 100%;
+        max-width: 100vw;
     }
 
+    * {
+        max-width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* HEADER */
     .header {
         height: auto;
         padding: 15px 5vw;
@@ -1640,6 +1673,7 @@ footer {
         font-size: 13px;
     }
 
+    /* HERO */
     .hero {
         padding: 0 5vw 10vw;
     }
@@ -1679,6 +1713,7 @@ footer {
         right: 5vw;
     }
 
+    /* INTRO */
     .intro-section {
         padding: 60px 0;
     }
@@ -1693,6 +1728,7 @@ footer {
         font-size: 16px;
     }
 
+    /* SPORTS PREVIEW */
     .sports-preview {
         padding: 80px 5vw;
     }
@@ -1711,6 +1747,7 @@ footer {
         font-size: 20px;
     }
 
+    /* CTA */
     .cta-section {
         padding: 80px 5vw;
     }
@@ -1719,11 +1756,13 @@ footer {
         padding: 60px 5vw;
     }
 
+    /* PAGE HERO */
     .page-hero,
     .form-hero {
         padding: 80px 5vw 50px;
     }
 
+    /* SPORTS LIST */
     .sports-list {
         padding: 30px 5vw 80px;
     }
@@ -1752,16 +1791,20 @@ footer {
         line-height: 1.8;
     }
 
+    /* TABLES - scroll within container */
+    .rule-grid,
+    .rules,
+    .registration-wrapper,
+    .table-wrapper {
+        overflow-x: auto;
+        max-width: 100%;
+    }
+
     .rule-grid table,
     .rules table,
     .registration-wrapper table,
-    .table-wrapper table,
-    #summaryTable {
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
+    .table-wrapper table {
         max-width: 100%;
-        -webkit-overflow-scrolling: touch;
     }
 
     .rule-grid table th,
@@ -1771,24 +1814,65 @@ footer {
     .registration-wrapper table th,
     .registration-wrapper table td,
     .table-wrapper table th,
-    .table-wrapper table td,
-    #summaryTable th,
-    #summaryTable td {
+    .table-wrapper table td {
         font-size: 14px;
         padding: 8px;
-        white-space: normal;
-        word-break: break-word;
     }
 
+    /* SUMMARY TABLE - stack into cards */
     .table-wrapper {
-        overflow-x: auto;
         max-width: 100%;
     }
 
-    #summaryTable {
-        min-width: 500px;
+    #summaryTable,
+    #summaryTable thead,
+    #summaryTable tbody,
+    #summaryTable tr,
+    #summaryTable th,
+    #summaryTable td {
+        display: block;
+        width: 100%;
     }
 
+    #summaryTable thead {
+        display: none;
+    }
+
+    #summaryTable tr {
+        margin-bottom: 15px;
+        border: 1px solid var(--border);
+        padding: 12px;
+        background: rgba(255,255,255,0.03);
+    }
+
+    #summaryTable td {
+        padding: 6px 0;
+        font-size: 15px;
+        text-align: left;
+        border: none;
+    }
+
+    #summaryTable tfoot,
+    #summaryTable tfoot tr {
+        display: block;
+        width: 100%;
+    }
+
+    #summaryTable tfoot td {
+        padding-top: 12px;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--gold);
+        border-top: 1px solid var(--gold);
+    }
+
+    #summaryTable .empty-row {
+        text-align: center;
+        padding: 20px;
+        color: var(--muted);
+    }
+
+    /* REGISTRATION FORM */
     .registration-wrapper {
         padding: 40px 5vw 80px;
     }
@@ -1817,6 +1901,7 @@ footer {
         font-size: 16px;
     }
 
+    /* EVENT SELECTOR */
     .event-title {
         padding: 15px;
     }
@@ -1844,13 +1929,28 @@ footer {
         font-size: 14px !important;
     }
 
+    /* REVIEW */
+    .review-page {
+        padding: 60px 5vw;
+    }
+
     .review-card {
         padding: 15px;
+    }
+
+    .review-card-header {
+        padding: 15px;
+        gap: 12px;
+    }
+
+    .review-card-header h2 {
+        font-size: 18px;
     }
 
     .review-details {
         grid-template-columns: 1fr !important;
         gap: 15px;
+        padding: 15px;
     }
 
     .review-buttons {
@@ -1863,12 +1963,17 @@ footer {
         text-align: center;
     }
 
+    /* PAYMENT */
     .payment-qr img {
         max-width: 200px;
     }
 
+    /* FOOTER */
     footer {
         padding: 30px 5vw;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
         text-align: center;
     }
 
@@ -1893,6 +1998,3 @@ footer {
     }
 
 }
-
-
-
