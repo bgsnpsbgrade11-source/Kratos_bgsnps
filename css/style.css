@@ -1826,4 +1826,261 @@ footer {
 .rule-grid table td {
     font-size: 16px;
 }
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .header {
+        height: auto;
+        padding: 15px 5vw;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+
+    nav {
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    .hero {
+        padding: 0 5vw 10vw;
+    }
+
+    .hero h1,
+    .page-hero h1,
+    .form-hero h1,
+    .review-page h1,
+    .success-page h1 {
+        font-size: clamp(40px, 14vw, 80px);
+        letter-spacing: -3px;
+    }
+
+    .hero-text {
+        font-size: 15px;
+        margin: 25px 0;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .hero-bg {
+        width: 300px;
+        height: 300px;
+        right: -100px;
+    }
+
+    .hero-number {
+        font-size: 50px;
+        right: 5vw;
+    }
+
+    .intro-section {
+        padding: 60px 0;
+    }
+
+    .intro-section h2,
+    .cta-section h2 {
+        font-size: clamp(35px, 10vw, 50px);
+        letter-spacing: -2px;
+    }
+
+    .intro-text {
+        font-size: 16px;
+    }
+
+    .sports-preview {
+        padding: 80px 5vw;
+    }
+
+    .preview-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .sport-card {
+        min-height: 200px;
+        padding: 20px;
+    }
+
+    .sport-card h3 {
+        font-size: 20px;
+    }
+
+    .cta-section {
+        padding: 80px 5vw;
+    }
+
+    .cta-section.small {
+        padding: 60px 5vw;
+    }
+
+    .page-hero,
+    .form-hero {
+        padding: 80px 5vw 50px;
+    }
+
+    .sports-list {
+        padding: 30px 5vw 80px;
+    }
+
+    .sport-header {
+        grid-template-columns: 40px 1fr 25px;
+        padding: 20px 0;
+    }
+
+    .sport-header h2 {
+        font-size: 24px;
+    }
+
+    .sport-detail.open .sport-rules {
+        max-height: 3000px;
+    }
+
+    .rule-grid {
+        padding: 5px 0 35px;
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .rules ul {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .rule-grid table,
+    .rules table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        max-width: 100%;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .rule-grid table th,
+    .rule-grid table td,
+    .rules table th,
+    .rules table td {
+        font-size: 14px;
+        padding: 8px;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .registration-wrapper {
+        padding: 40px 5vw 80px;
+    }
+
+    .form-section {
+        margin-bottom: 50px;
+    }
+
+    .form-section-title {
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .form-section-title h2 {
+        font-size: 24px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .event-title {
+        padding: 15px;
+    }
+
+    .sport-checkbox strong {
+        font-size: 15px;
+    }
+
+    .age-options {
+        padding: 15px;
+    }
+
+    .age-row {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .quantity-input {
+        width: 60px !important;
+    }
+
+    .gender-select {
+        width: 100px !important;
+        padding: 8px !important;
+        font-size: 14px !important;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    #summaryTable {
+        min-width: 600px;
+    }
+
+    .review-card {
+        padding: 15px;
+    }
+
+    .review-details {
+        grid-template-columns: 1fr !important;
+        gap: 15px;
+    }
+
+    .review-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .review-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .payment-qr img {
+        max-width: 200px;
+    }
+
+    footer {
+        padding: 30px 5vw;
+        text-align: center;
+    }
+
+    .footer-logo {
+        font-size: 18px;
+    }
+
+}
+
 
