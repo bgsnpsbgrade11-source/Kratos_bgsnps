@@ -1151,6 +1151,30 @@ nav a.active {
 .gender-select:disabled {
     opacity: .3;
 }
+.gender-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border);
+}
+
+.gender-section:last-child {
+    border-bottom: none;
+}
+
+.gender-label {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.gender-age-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
 
 
